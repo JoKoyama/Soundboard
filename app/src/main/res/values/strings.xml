@@ -12,4 +12,6 @@
     <string name="d">D</string>
     <string name="e">E</string>
     <string name="g">G</string>
+    <string name="scale">Scale</string>
+    <string name="Switch">Switch</string>
 </resources>
