@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,7 +29,8 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
     private Button g;
     private Button gSharp;
     private Button scale;
-//    private Switch switcher;
+    private Button song;
+    private Switch switcher;
     private SoundPool soundPool;
     private Boolean isSoundPoolLoaded;
     private int soundIDa;
@@ -54,9 +57,12 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
     private int soundIDhighfSharp;
     private int soundIDhighg;
     private int soundIDhighgSharp;
+    private Sound sound;
     private Map<Integer,Integer> noteMap;
     private ArrayList<Integer> scaleList;
-    private ArrayList<Integer> songList;
+    private ArrayList<Sound> melA;
+    private ArrayList<Sound> melB;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +108,8 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
         soundIDhighgSharp = soundPool.load(this, R.raw.scalehighgs,1);
         noteMap = new HashMap<>();
         scaleList = new ArrayList();
-
+        melA = new ArrayList();
+        melB = new ArrayList();
         noteMap.put(a.getId(),soundIDhigha);
         noteMap.put(bFlat.getId(),soundIDhighbFlat);
         noteMap.put(b.getId(),soundIDhighb);
@@ -141,14 +148,24 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
         scaleList.add(soundIDhighg);
         scaleList.add(soundIDhighgSharp);
 
-        songList.add(soundIDhighd);
-        songList.add(soundIDhighfSharp);
-        songList.add(soundIDhighd);
-        songList.add(soundIDhighfSharp);
-        songList.add(soundIDhighd);
-        songList.add(soundIDhighfSharp);
+        melA.add(new Sound(soundIDhighd,1.5));
+        melA.add(new Sound(soundIDhighf,1.5));
+        melA.add(new Sound(soundIDhighd,1.5));
+        melA.add(new Sound(soundIDhighf,1.5));
+        melA.add(new Sound(soundIDhighd,1.0));
+        melA.add(new Sound(soundIDhighf,1.0));
+        melA.add(new Sound(soundIDhighd,0.0));
+        melA.add(new Sound(soundIDbFlat,8.0));
 
-
+        melB.add(new Sound(soundIDhighd,1.5));
+        melB.add(new Sound(soundIDhighf,1.5));
+        melB.add(new Sound(soundIDhighd,1.5));
+        melB.add(new Sound(soundIDhighf,1.5));
+        melB.add(new Sound(soundIDhighd,1.0));
+        melB.add(new Sound(soundIDhighf,1.0));
+        melB.add(new Sound(soundIDhighd,0.0));
+        melB.add(new Sound(soundIDbFlat,0.0));
+        melB.add(new Sound(soundIDd,8.0));
 
 
     }
@@ -168,8 +185,30 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
         fSharp.setOnClickListener(keyBoardListener);
         g.setOnClickListener(keyBoardListener);
         gSharp.setOnClickListener(keyBoardListener);
+        song.setOnClickListener(this);
         scale.setOnClickListener(this);
-//        switcher.setOnClickListener();
+        switcher.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                if (z) {
+                    a.setVisibility(View.GONE);
+                    bFlat.setVisibility(View.GONE);
+                    b.setVisibility(View.GONE);
+                    c.setVisibility(View.GONE);
+                    cSharp.setVisibility(View.GONE);
+                    d.setVisibility(View.GONE);
+                    dSharp.setVisibility(View.GONE);
+                    e.setVisibility(View.GONE);
+                    f.setVisibility(View.GONE);
+                    fSharp.setVisibility(View.GONE);
+                    g.setVisibility(View.GONE);
+                    gSharp.setVisibility(View.GONE);
+                    scale.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+
     }
 
     private void playSound(int soundID) {
@@ -199,7 +238,20 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
         g = findViewById(R.id.button_Main_G);
         gSharp = findViewById(R.id.button_Main_GSharp);
         scale = findViewById(R.id.button_main_scale);
-//        switcher = findViewById(R.id.switch_main_LayoutSwitch);
+        switcher = findViewById(R.id.switch_main_LayoutSwitch);
+        song = findViewById(R.id.button_main_song);
+    }
+    private void playNote(int note,double temp){
+        if (temp == 0){
+            soundPool.play(note,1,1,1,0,1);
+            delay((int)temp);
+        }
+        else{
+            soundPool.play(note,1,1,1,0,1);
+            delay((int)temp);
+            soundPool.autoPause();
+        }
+
     }
 
 
@@ -207,14 +259,18 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
-            case R.id.button_main_scale : {
-                for( int note : scaleList) {
+            case R.id.button_main_scale: {
+                for (int note : scaleList) {
                     playSound(note);
                     delay(200);
                 }
                 break;
             }
-//            case R.id.butt
+            case R.id.button_main_song: {
+               for (Sound note: melB) {
+                   playNote(note.getSound(),note.getNoteTime());
+               }
+            }
         }
     }
 
