@@ -31,8 +31,17 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
     private Button scale;
     private Button song;
     private Switch switcher;
-    private SoundPool soundPool;
-    private Boolean isSoundPoolLoaded;
+    public SoundPool soundPool;
+    public Boolean isSoundPoolLoaded;
+    private int soundIDc3;
+    private int soundIDcSharp3;
+    private int soundIDd3;
+    private int soundIDdSharp3;
+    private int soundIDe3;
+    private int soundIDf3;
+    private int soundIDfSharp3;
+    private int soundIDg3;
+    private int soundIDgSharp3;
     private int soundIDa;
     private int soundIDbFlat;
     private int soundIDb;
@@ -106,6 +115,15 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
         soundIDhighfSharp = soundPool.load(this, R.raw.scalehighfs,1);
         soundIDhighg = soundPool.load(this, R.raw.scalehighg,1);
         soundIDhighgSharp = soundPool.load(this, R.raw.scalehighgs,1);
+        soundIDc3 = soundPool.load(this, R.raw.c3,1);
+        soundIDcSharp3 = soundPool.load(this, R.raw.cs3,1);
+        soundIDd3 = soundPool.load(this, R.raw.d3,1);
+        soundIDdSharp3 = soundPool.load(this, R.raw.ds3,1);
+        soundIDe3 = soundPool.load(this, R.raw.e3,1);
+        soundIDf3 = soundPool.load(this, R.raw.f3,1);
+        soundIDfSharp3 = soundPool.load(this, R.raw.fs3,1);
+        soundIDg3 = soundPool.load(this, R.raw.g3,1);
+        soundIDgSharp3 = soundPool.load(this, R.raw.gs3,1);
         noteMap = new HashMap<>();
         scaleList = new ArrayList();
         melA = new ArrayList();
@@ -148,24 +166,168 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
         scaleList.add(soundIDhighg);
         scaleList.add(soundIDhighgSharp);
 
-        melA.add(new Sound(soundIDhighd,1.5));
-        melA.add(new Sound(soundIDhighf,1.5));
-        melA.add(new Sound(soundIDhighd,1.5));
-        melA.add(new Sound(soundIDhighf,1.5));
-        melA.add(new Sound(soundIDhighd,1.0));
-        melA.add(new Sound(soundIDhighf,1.0));
-        melA.add(new Sound(soundIDhighd,0.0));
-        melA.add(new Sound(soundIDbFlat,8.0));
+        melA.add(new Sound(soundIDhighd,1.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1.5f,1,1));
+        melA.add(new Sound(soundIDhighd,1.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1.5f,1,1));
+        melA.add(new Sound(soundIDhighd,1.0f,1,1));
+        melA.add(new Sound(soundIDhighf,1.0f,1,1));
+        melA.add(new Sound(soundIDhighd,0.0f,1,1));
+        melA.add(new Sound(soundIDbFlat,4.0f,1,1));
+        melA.add(new Sound(soundIDa,1f,1,1));
+        melA.add(new Sound(soundIDb,0.5f,1,1));
+        melA.add(new Sound(soundIDc,1f,1,1));
+        melA.add(new Sound(soundIDf,2f,1,1));
+        melA.add(new Sound(soundIDhighd,1.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1.5f,1,1));
+        melA.add(new Sound(soundIDhighd,1.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1.5f,1,1));
+        melA.add(new Sound(soundIDhighd,1.0f,1,1));
+        melA.add(new Sound(soundIDhighf,1.0f,1,1));
+        melA.add(new Sound(soundIDhighd,0.0f,1,1));
+        melA.add(new Sound(soundIDbFlat,0.0f,1,1));
+        melA.add(new Sound(soundIDd,4.0f,1,1));
+        melA.add(new Sound(soundIDhighd,1.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1.5f,1,1));
+        melA.add(new Sound(soundIDhighd,1.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1.5f,1,1));
+        melA.add(new Sound(soundIDhighd,1.0f,1,1));
+        melA.add(new Sound(soundIDhighf,1.0f,1,1));
+        melA.add(new Sound(soundIDhighd,0.0f,1,1));
+        melA.add(new Sound(soundIDbFlat,4.0f,1,1));
+        melA.add(new Sound(soundIDd,1f,1,1));
+        melA.add(new Sound(soundIDb,1f,1,1));
+        melA.add(new Sound(soundIDa,1f,1,1));
+        melA.add(new Sound(soundIDf3,1f,1,1));
+        melA.add(new Sound(soundIDhighd,1.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1.5f,1,1));
+        melA.add(new Sound(soundIDhighd,1.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1.5f,1,1));
+        melA.add(new Sound(soundIDhighd,1.0f,1,1));
+        melA.add(new Sound(soundIDhighf,1.0f,1,1));
+        melA.add(new Sound(soundIDhighd,0.0f,1,1));
+        melA.add(new Sound(soundIDbFlat,0.0f,1,1));
+        melA.add(new Sound(soundIDd,5.0f,1,1));
+        melA.add(new Sound(soundIDg3,1f,1,1));
+        melA.add(new Sound(soundIDb,1f,1,1));
+        melA.add(new Sound(soundIDg3,0.5f,0,0));
+        melA.add(new Sound(soundIDc,0.5f,1,1));
+        melA.add(new Sound(soundIDg,1f,1,1));
+        melA.add(new Sound(soundIDhighb,0f,1,1));
+        melA.add(new Sound(soundIDhighd,1.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1.5f,1,1));
+        melA.add(new Sound(soundIDhighd,1.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1f,1,1));
+        melA.add(new Sound(soundIDg3,0.5f,1,1));
+        melA.add(new Sound(soundIDhighd,0f,1f,1f));
+        melA.add(new Sound(soundIDb,0.5f,1,1));
+        melA.add(new Sound(soundIDc,0.5f,1,1));
+        melA.add(new Sound(soundIDhighf,0f,1f,1f));
+        melA.add(new Sound(soundIDd,0.5f,1,1));
+        melA.add(new Sound(soundIDfSharp,0.5f,1,1));
+        melA.add(new Sound(soundIDd,0f,1,1));
+        melA.add(new Sound(soundIDhighd,0.0f,1,1));
+        melA.add(new Sound(soundIDbFlat,3.5f,1,1));
+        melA.add(new Sound(soundIDg3,0.5f,1,1));
+        melA.add(new Sound(soundIDb,0.5f,1,1));
+        melA.add(new Sound(soundIDc,0.5f,1,1));
+        melA.add(new Sound(soundIDd,0.5f,1,1));
+        melA.add(new Sound(soundIDd,0.5f,1,1));
+        melA.add(new Sound(soundIDfSharp,0.5f,1,1));
+        melA.add(new Sound(soundIDhighd,0f,1,1));
+        melA.add(new Sound(soundIDd,1f,1,1));
+        melA.add(new Sound(soundIDg3,0.5f,1,1));
+        melA.add(new Sound(soundIDhighf,0f,1,1));
+        melA.add(new Sound(soundIDb,1.5f,1,1));
+        melA.add(new Sound(soundIDhighd,1.0f,1,1));
+        melA.add(new Sound(soundIDb,0.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1.5f,1,1));
+        melA.add(new Sound(soundIDb,0.0f,1,1));
+        melA.add(new Sound(soundIDhighd,1f,1f,1f));
+        melA.add(new Sound(soundIDc,0.0f,1,1));
+        melA.add(new Sound(soundIDhighf,1f,1f,1f));
+        melA.add(new Sound(soundIDa,0.0f,1,1));
+        melA.add(new Sound(soundIDhighd,0.0f,1,1));
+        melA.add(new Sound(soundIDbFlat,3.5f,1,1));
+        melA.add(new Sound(soundIDg3,1f,1,1));
+        melA.add(new Sound(soundIDb,1f,1,1));
+        melA.add(new Sound(soundIDg3,0.5f,0,0));
+        melA.add(new Sound(soundIDc,0.5f,1,1));
+        melA.add(new Sound(soundIDg,1f,1,1));
+        melA.add(new Sound(soundIDhighb,0f,1,1));
+        melA.add(new Sound(soundIDhighd,1.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1.5f,1,1));
+        melA.add(new Sound(soundIDhighd,1.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1f,1,1));
+        melA.add(new Sound(soundIDg3,0.5f,1,1));
+        melA.add(new Sound(soundIDhighd,0f,1f,1f));
+        melA.add(new Sound(soundIDb,0.5f,1,1));
+        melA.add(new Sound(soundIDc,0.5f,1,1));
+        melA.add(new Sound(soundIDhighf,0f,1f,1f));
+        melA.add(new Sound(soundIDd,0.5f,1,1));
+        melA.add(new Sound(soundIDfSharp,0.5f,1,1));
+        melA.add(new Sound(soundIDd,0f,1,1));
+        melA.add(new Sound(soundIDhighd,0.0f,1,1));
+        melA.add(new Sound(soundIDbFlat,3.5f,1,1));
+        melA.add(new Sound(soundIDg3,0.5f,1,1));
+        melA.add(new Sound(soundIDb,0.5f,1,1));
+        melA.add(new Sound(soundIDc,0.5f,1,1));
+        melA.add(new Sound(soundIDd,0.5f,1,1));
+        melA.add(new Sound(soundIDd,0.5f,1,1));
+        melA.add(new Sound(soundIDfSharp,0.5f,1,1));
+        melA.add(new Sound(soundIDhighd,0f,1,1));
+        melA.add(new Sound(soundIDd,1f,1,1));
+        melA.add(new Sound(soundIDg3,0.5f,1,1));
+        melA.add(new Sound(soundIDhighf,0f,1,1));
+        melA.add(new Sound(soundIDb,1.5f,1,1));
+        melA.add(new Sound(soundIDhighd,1.0f,1,1));
+        melA.add(new Sound(soundIDb,0.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1.5f,1,1));
+        melA.add(new Sound(soundIDb,0.0f,1,1));
+        melA.add(new Sound(soundIDhighd,1f,1f,1f));
+        melA.add(new Sound(soundIDc,0.0f,1,1));
+        melA.add(new Sound(soundIDhighf,1f,1f,1f));
+        melA.add(new Sound(soundIDa,0.0f,1,1));
+        melA.add(new Sound(soundIDhighd,0.0f,1,1));
+        melA.add(new Sound(soundIDbFlat,4.0f,1,1));
+        melA.add(new Sound(soundIDg3,1f,1,1));
+        melA.add(new Sound(soundIDf3,1f,1,1));
 
-        melB.add(new Sound(soundIDhighd,1.5));
-        melB.add(new Sound(soundIDhighf,1.5));
-        melB.add(new Sound(soundIDhighd,1.5));
-        melB.add(new Sound(soundIDhighf,1.5));
-        melB.add(new Sound(soundIDhighd,1.0));
-        melB.add(new Sound(soundIDhighf,1.0));
-        melB.add(new Sound(soundIDhighd,0.0));
-        melB.add(new Sound(soundIDbFlat,0.0));
-        melB.add(new Sound(soundIDd,8.0));
+
+        melA.add(new Sound(soundIDhighd,0f,1,1));
+        melA.add(new Sound(soundIDg3,0.5f,1,1));
+        melA.add(new Sound(soundIDc,0.5f,1,1));
+        melA.add(new Sound(soundIDc,0.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1.5f,1,1));
+        melA.add(new Sound(soundIDhighd,1.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1.5f,1,1));
+        melA.add(new Sound(soundIDg3,0f,1,1));
+        melA.add(new Sound(soundIDhighd,1.0f,1,1));
+        melA.add(new Sound(soundIDf3,0f,1,1));
+        melA.add(new Sound(soundIDhighf,1.0f,1,1));
+        melA.add(new Sound(soundIDhighd,0.0f,1,1));
+        melA.add(new Sound(soundIDg3,0.5f,1,1));
+        melA.add(new Sound(soundIDb,0.5f,1,1));
+        melA.add(new Sound(soundIDa,4.5f,1,1));
+        melA.add(new Sound(soundIDd3,0.5f,1,1));
+        melA.add(new Sound(soundIDc3,1f,1,1));
+        melA.add(new Sound(soundIDd3,1f,1,1));
+        melA.add(new Sound(soundIDhighd,0f,1,1));
+        melA.add(new Sound(soundIDf3,1f,1,1));
+        melA.add(new Sound(soundIDg3,0.5f,1,1));
+        melA.add(new Sound(soundIDc3,0f,1,1));
+        melA.add(new Sound(soundIDhighf,1.5f,1,1));
+        melA.add(new Sound(soundIDhighd,1.5f,1,1));
+        melA.add(new Sound(soundIDhighf,1.0f,1,1));
+        melA.add(new Sound(g2,0.5f,1,1));
+
+        melA.add(new Sound(soundIDhighd,1.0f,1,1));
+        melA.add(new Sound(soundIDhighf,1.0f,1,1));
+        melA.add(new Sound(soundIDhighd,0.0f,1,1));
+        melA.add(new Sound(soundIDbFlat,4.0f,1,1));
+
+
+
 
 
     }
@@ -205,6 +367,21 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
                     gSharp.setVisibility(View.GONE);
                     scale.setVisibility(View.VISIBLE);
                 }
+                else {
+                    a.setVisibility(View.VISIBLE);
+                    bFlat.setVisibility(View.VISIBLE);
+                    b.setVisibility(View.VISIBLE);
+                    c.setVisibility(View.VISIBLE);
+                    cSharp.setVisibility(View.VISIBLE);
+                    d.setVisibility(View.VISIBLE);
+                    dSharp.setVisibility(View.VISIBLE);
+                    e.setVisibility(View.VISIBLE);
+                    f.setVisibility(View.VISIBLE);
+                    fSharp.setVisibility(View.VISIBLE);
+                    g.setVisibility(View.VISIBLE);
+                    gSharp.setVisibility(View.VISIBLE);
+                    scale.setVisibility(View.GONE);
+                }
             }
         });
 
@@ -241,15 +418,17 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
         switcher = findViewById(R.id.switch_main_LayoutSwitch);
         song = findViewById(R.id.button_main_song);
     }
-    private void playNote(int note,double temp){
-        if (temp == 0){
-            soundPool.play(note,1,1,1,0,1);
-            delay((int)temp);
-        }
-        else{
-            soundPool.play(note,1,1,1,0,1);
-            delay((int)temp);
-            soundPool.autoPause();
+    private void playNote(int note,double temp,float volR,float volL){
+        if (isSoundPoolLoaded) {
+            if (temp == 0) {
+                soundPool.play(note,  volL,  volR, 1, 0, 1);
+                delay((int) temp);
+                soundPool.pause(note);
+            } else {
+                soundPool.play(note, volL,  volR, 1, 0, 1);
+                delay((int) temp);
+                soundPool.pause(note);
+            }
         }
 
     }
@@ -267,8 +446,11 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
                 break;
             }
             case R.id.button_main_song: {
-               for (Sound note: melB) {
-                   playNote(note.getSound(),note.getNoteTime());
+//               for (Sound note: melB) {
+//                   playNote(note.getSound(),note.getNoteTime(),note.getVolR(),note.getVolL());
+//               }
+               for (Sound note: melA) {
+                    playNote(note.getSound(),note.getNoteTime(),note.getVolR(),note.getVolL());
                }
             }
         }
