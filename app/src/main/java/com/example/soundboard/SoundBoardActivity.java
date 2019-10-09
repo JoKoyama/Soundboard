@@ -319,7 +319,7 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
         melA.add(new Sound(soundIDhighf,1.5f,1,1));
         melA.add(new Sound(soundIDhighd,1.5f,1,1));
         melA.add(new Sound(soundIDhighf,1.0f,1,1));
-        melA.add(new Sound(g2,0.5f,1,1));
+        melA.add(new Sound(soundIDg3,0.5f,1,1));
 
         melA.add(new Sound(soundIDhighd,1.0f,1,1));
         melA.add(new Sound(soundIDhighf,1.0f,1,1));
